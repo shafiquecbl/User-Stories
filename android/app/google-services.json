@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "532825867075",
+    "project_id": "user-stories-80e93",
+    "storage_bucket": "user-stories-80e93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532825867075:android:4a15d8e9e13f08880ce5f6",
+        "android_client_info": {
+          "package_name": "com.app.userstories"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "532825867075-18294rc04socqi0043imrgq57b7sqtjg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdpDvpAdvwfmu1W8n7fsXfixwmFADXsRY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "532825867075-18294rc04socqi0043imrgq57b7sqtjg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
