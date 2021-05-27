@@ -7,7 +7,6 @@ import 'package:user_stories/components/navigator.dart';
 import 'package:user_stories/routes.dart';
 import 'package:user_stories/screens/Admin/Admin.dart';
 import 'package:user_stories/theme.dart';
-import 'screens/User Home/User_Home.dart';
 import 'screens/sign_in/sign_in_screen.dart';
 import 'package:user_stories/screens/Reseller/home_screen.dart';
 import 'size_config.dart';
@@ -56,9 +55,7 @@ class Home extends StatelessWidget {
         else {
           if (user.emailVerified) {
             SchedulerBinding.instance.addPostFrameCallback((_) {
-              snapshot.data['Role'] == 'User'
-                  ? removeNavigator(context, UserHome())
-                  : removeNavigator(context, ResellerHome());
+              removeNavigator(context, ResellerHome());
             });
           }
         }

@@ -13,7 +13,6 @@ import '../../../components/default_button.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 import '../../Reseller/home_screen.dart';
-import 'package:user_stories/screens/User Home/User_Home.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -164,9 +163,7 @@ class _SignFormState extends State<SignForm> {
           removeNavigator(context, AdminHome());
         } else {
           if (current.user.emailVerified) {
-            value['Role'] == 'User'
-                ? removeNavigator(context, UserHome())
-                : removeNavigator(context, ResellerHome());
+            removeNavigator(context, ResellerHome());
           } else {
             String title = "Email not verified";
             String content = "Please verify the Email first to Sigin.";

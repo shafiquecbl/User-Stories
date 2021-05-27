@@ -78,7 +78,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
     await user.reload();
     if (user.emailVerified) {
       timer.cancel();
-      navigatorPush(context, CompleteProfileScreen(role: widget.role));
+      navigatorPush(context, CompleteProfileScreen());
       FirebaseFirestore.instance.collection('Users').doc(email).set({
         'Email': user.email,
         'Role': widget.role,

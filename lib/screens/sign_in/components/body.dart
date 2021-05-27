@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:user_stories/components/navigator.dart';
 import 'package:user_stories/components/no_account_text.dart';
 import 'package:user_stories/components/socal_card.dart';
+import 'package:user_stories/screens/Guest/guest_home.dart';
 import '../../../size_config.dart';
 import 'sign_form.dart';
 
@@ -51,6 +53,29 @@ class Body extends StatelessWidget {
                 ),
                 SizedBox(height: getProportionateScreenHeight(20)),
                 NoAccountText(),
+                SizedBox(height: getProportionateScreenHeight(20)),
+                GestureDetector(
+                    onTap: () {
+                      navigatorPush(context, Guest());
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Skip',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                                decoration: TextDecoration.underline,
+                                color: Colors.deepPurpleAccent)),
+                        SizedBox(
+                          width: 2,
+                        ),
+                        Icon(
+                          Icons.skip_next,
+                          color: Colors.deepPurpleAccent,
+                        )
+                      ],
+                    ))
               ],
             ),
           ),

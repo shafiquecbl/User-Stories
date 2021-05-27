@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:user_stories/components/navigator.dart';
+import 'package:user_stories/screens/Admin/Pages/Home/Screens/My%20Profile/reseller_profile.dart';
 import '../../../profile/components/profile_menu.dart';
 import '../../../profile/components/profile_pic.dart';
 import '../../../sign_in/sign_in_screen.dart';
@@ -24,7 +25,7 @@ class _AdminSettingState extends State<AdminSetting> {
             ProfileMenu(
               text: "My Profile",
               icon: "assets/icons/User Icon.svg",
-              press: () => {},
+              press: () => {navigatorPush(context, AdminProfile())},
             ),
             ProfileMenu(
               text: "Log Out",

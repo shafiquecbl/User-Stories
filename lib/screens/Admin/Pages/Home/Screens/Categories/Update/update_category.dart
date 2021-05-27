@@ -136,14 +136,14 @@ class _CategoryUpdateFormState extends State<CategoryUpdateForm> {
       onSaved: (newValue) => categoryName = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kNamelNullError);
+          removeError(error: 'Please add Category');
           categoryName = value;
         }
         return null;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kNamelNullError);
+          addError(error: 'Please add Category');
           return "";
         }
         return null;

@@ -1,49 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:user_stories/components/navigator.dart';
-import 'package:user_stories/screens/Reseller/components/icon_btn_with_counter.dart';
 import '../../../../components/product_card.dart';
 import '../../../../models/Product.dart';
-import '../../../cart/cart_screen.dart';
 
-class CatProducts extends StatefulWidget {
+class GuestProducts extends StatefulWidget {
   final String category;
-  CatProducts({@required this.category});
+  GuestProducts({@required this.category});
 
   @override
-  _CatProductsState createState() => _CatProductsState();
+  _GuestProductsState createState() => _GuestProductsState();
 }
 
-class _CatProductsState extends State<CatProducts> {
-  User user = FirebaseAuth.instance.currentUser;
-  String role;
+class _GuestProductsState extends State<GuestProducts> {
   @override
-  void initState() {
-    super.initState();
-    FirebaseFirestore.instance
-        .collection('Users')
-        .doc(user.email)
-        .get()
-        .then((value) {
-      role = value['Role'];
-    });
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(widget.category),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15, top: 5),
-            child: IconBtnWithCounter(
-                svgSrc: "assets/icons/Cart Icon.svg",
-                press: () => navigatorPush(context, CartScreen(role: role))),
-          ),
-        ],
       ),
       body: SafeArea(
         child: StreamBuilder(

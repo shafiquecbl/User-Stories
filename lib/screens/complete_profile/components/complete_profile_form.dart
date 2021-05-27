@@ -6,14 +6,11 @@ import 'package:user_stories/components/custom_surfix_icon.dart';
 import 'package:user_stories/components/default_button.dart';
 import 'package:user_stories/components/form_error.dart';
 import 'package:user_stories/components/navigator.dart';
-import 'package:user_stories/screens/User Home/User_Home.dart';
 import 'package:user_stories/screens/Reseller/home_screen.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class CompleteProfileForm extends StatefulWidget {
-  final String role;
-  CompleteProfileForm({@required this.role});
   @override
   _CompleteProfileFormState createState() => _CompleteProfileFormState();
 }
@@ -164,8 +161,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     }).then((value) {
       FirebaseAuth.instance.currentUser.updateProfile(displayName: firstName);
       Navigator.pop(context);
-      removeNavigator(
-          context, widget.role == 'User' ? UserHome() : ResellerHome());
+      removeNavigator(context, ResellerHome());
     });
   }
 }

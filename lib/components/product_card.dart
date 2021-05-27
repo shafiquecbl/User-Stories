@@ -24,7 +24,8 @@ class ProductCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 160,
+              height: 130,
+              width: 140,
               padding: EdgeInsets.all(getProportionateScreenWidth(10)),
               decoration: BoxDecoration(
                 color: kSecondaryColor.withOpacity(0.1),

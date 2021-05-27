@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import '../../size_config.dart';
-import 'Home/reseller_home.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'Setting/reseller_setting.dart';
 import '../../constants.dart';
+import 'Home/guest_home.dart';
+import 'Settings/guest_setting.dart';
 
-class ResellerHome extends StatefulWidget {
+class Guest extends StatefulWidget {
   static String routeName = "/Admin_home";
   @override
-  _ResellerHomeState createState() => _ResellerHomeState();
+  _GuestState createState() => _GuestState();
 }
 
-class _ResellerHomeState extends State<ResellerHome> {
+class _GuestState extends State<Guest> {
   int _currentIndex = 0;
   PageController _pageController;
 
@@ -36,7 +36,7 @@ class _ResellerHomeState extends State<ResellerHome> {
         onPageChanged: (index) {
           setState(() => _currentIndex = index);
         },
-        children: <Widget>[ResellerBody(), ResellerSetting()],
+        children: <Widget>[GuestHome(), GuestSettings()],
       ),
       bottomNavigationBar: BottomNavyBar(
         mainAxisAlignment: MainAxisAlignment.spaceAround,

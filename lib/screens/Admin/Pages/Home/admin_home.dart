@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:user_stories/screens/Admin/Pages/Home/Screens/Orders/orders.dart';
 import '../../../../constants.dart';
 import 'card.dart';
 import 'Screens/Categories/Categories.dart';
@@ -29,7 +30,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
           crossAxisSpacing: 30,
           mainAxisSpacing: 30,
           padding: EdgeInsets.symmetric(horizontal: 35, vertical: 15),
-          children: [categories(), products(), users(), reSellers()]),
+          children: [categories(), products(), users(), reSellers(), orders()]),
     );
   }
 
@@ -42,6 +43,18 @@ class _AdminDashboardState extends State<AdminDashboard> {
       ),
       title: 'Catgories',
       screen: AdminCategories(),
+    );
+  }
+
+  orders() {
+    return DashboardCard(
+      icon: Icon(
+        Icons.add_shopping_cart,
+        color: kPrimaryColor,
+        size: 50,
+      ),
+      title: 'Manage Orders',
+      screen: ViewOrders(),
     );
   }
 

@@ -18,14 +18,20 @@ class AvailableCategories extends StatelessWidget {
           );
         if (snapshot.data.docs.length == 0)
           return Center(child: Text('No Categories Available'));
-        return GridView.count(
-            crossAxisCount: 2,
-            childAspectRatio: 0.5,
-            crossAxisSpacing: 30,
-            mainAxisSpacing: 30,
-            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-            children: List<Widget>.generate(snapshot.data.docs.length,
-                (index) => categoryList(snapshot.data.docs[index])));
+        return Container(
+          width: MediaQuery.of(context).size.width,
+          // color: Colors.grey[100],
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                  children: List<Widget>.generate(snapshot.data.docs.length,
+                      (index) => categoryList(snapshot.data.docs[index]))),
+            ),
+          ),
+        );
       },
     );
   }

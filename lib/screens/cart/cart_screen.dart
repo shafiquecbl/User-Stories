@@ -7,14 +7,14 @@ import 'package:user_stories/components/navigator.dart';
 import 'package:user_stories/models/Cart.dart';
 import 'package:user_stories/screens/Payment%20Screen/Views/MyCardsPage.dart';
 import '../../components/default_button.dart';
-import '../../constants.dart';
 import '../../models/Product.dart';
 import '../../size_config.dart';
 import 'components/cart_card.dart';
 
 class CartScreen extends StatefulWidget {
   static String routeName = "/cart";
-
+  final String role;
+  CartScreen({@required this.role});
   @override
   _CartScreenState createState() => _CartScreenState();
 }
@@ -67,7 +67,9 @@ class _CartScreenState extends State<CartScreen> {
                 item.add(Product(
                     image: ds[i]['image'],
                     title: ds[i]['title'],
-                    price: ds[i]['price'],
+                    price: widget.role == 'ReSeller'
+                        ? (ds[i]['price'] / 2)
+                        : ds[i]['price'],
                     docID: ds[i].id,
                     description: description));
               }
@@ -166,13 +168,9 @@ class _CartScreenState extends State<CartScreen> {
                   child: SvgPicture.asset("assets/icons/receipt.svg"),
                 ),
                 Spacer(),
-                Text("Add voucher code"),
-                const SizedBox(width: 10),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 12,
-                  color: kTextColor,
-                )
+                widget.role == "ReSeller"
+                    ? Text("50% discount for Reseller")
+                    : Text("Good Luck :)"),
               ],
             ),
             SizedBox(height: getProportionateScreenHeight(20)),
@@ -184,7 +182,9 @@ class _CartScreenState extends State<CartScreen> {
                     text: "Total:\n",
                     children: [
                       TextSpan(
-                        text: "\$$totalPrice",
+                        text: widget.role == 'ReSeller'
+                            ? "\$${(totalPrice / 2).toStringAsFixed(2)}"
+                            : "\$$totalPrice",
                         style: TextStyle(fontSize: 16, color: Colors.black),
                       ),
                     ],

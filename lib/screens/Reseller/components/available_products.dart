@@ -20,7 +20,7 @@ class AvailableProducts extends StatelessWidget {
           return Center(child: Text('No Products Available'));
         return GridView.count(
             crossAxisCount: 2,
-            childAspectRatio: 0.5,
+            childAspectRatio: 0.7,
             crossAxisSpacing: 30,
             mainAxisSpacing: 30,
             padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),

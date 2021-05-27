@@ -1,5 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:user_stories/components/navigator.dart';
+import 'package:user_stories/screens/Admin/Pages/Home/Screens/Profiles/reseller_profile.dart';
 
 class AdminResellers extends StatefulWidget {
   @override
@@ -40,11 +43,65 @@ class _AdminResellersState extends State<AdminResellers> {
   }
 
   userList(DocumentSnapshot snapshot) {
-    return Card(
-      elevation: 2,
-      shadowColor: Colors.deepPurpleAccent,
-      child: ListTile(
-        title: Text(snapshot['Email']),
+    return GestureDetector(
+      onTap: () {
+        navigatorPush(context, ViewProfiles(userEmail: snapshot['Email']));
+      },
+      child: Card(
+        elevation: 2,
+        shadowColor: Colors.deepPurpleAccent,
+        child: ListTile(
+          leading: Container(
+              padding: EdgeInsets.all(2),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(40)),
+                border: Border.all(
+                  width: 2,
+                  color: Theme.of(context).primaryColor,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                  ),
+                ],
+              ),
+              child: CircleAvatar(
+                  radius: 24,
+                  backgroundColor: Colors.grey[100],
+                  child: snapshot['PhotoURL'] == null ||
+                          snapshot['PhotoURL'] == ""
+                      ? ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Image.asset(
+                            'assets/images/nullUser.png',
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      : ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: CachedNetworkImage(
+                            imageUrl: snapshot['PhotoURL'],
+                            placeholder: (context, url) => Image(
+                              image: AssetImage('assets/images/nullUser.png'),
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                            ),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                          ),
+                        ))),
+          title: Text(snapshot['Email']),
+          subtitle: Text(snapshot['Name']),
+          trailing: Icon(Icons.arrow_forward_ios),
+        ),
       ),
     );
   }
